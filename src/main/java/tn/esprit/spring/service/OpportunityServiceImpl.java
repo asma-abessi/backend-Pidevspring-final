@@ -1,6 +1,7 @@
 package tn.esprit.spring.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,6 +75,18 @@ public class OpportunityServiceImpl implements IOpportunityService {
 			System.out.print("not allowed ? ");
 		}
 		
+	}
+
+	@Override
+	public List<Map<Long, Integer>> StatisticUserOppotunity() {
+		
+		return opportunityRepo.statisticsopp();
+	}
+
+	@Override
+	public int nbropportunities() {
+		// TODO Auto-generated method stub
+		return opportunityRepo.nbOpportunities();
 	}
 
 	

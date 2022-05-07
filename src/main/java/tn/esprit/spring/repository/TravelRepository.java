@@ -27,4 +27,7 @@ public interface TravelRepository extends CrudRepository<Travel, Long> ,JpaRepos
 	
 	@Query("SELECT t FROM Travel t where CURRENT_DATE BETWEEN t.startDate AND t.endDate")
 	List<Travel> getUsersByDate();
+	
+	@Query("SELECT count(u) FROM Travel u ")	
+	int nbTravels();
 }

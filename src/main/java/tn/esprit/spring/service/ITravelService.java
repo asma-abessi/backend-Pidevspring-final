@@ -34,5 +34,7 @@ public interface ITravelService {
 	public String Matching();
 	
 	public Set<User> GetMatching(Long id);
+	
+	public int nbrtravels();
 
 }

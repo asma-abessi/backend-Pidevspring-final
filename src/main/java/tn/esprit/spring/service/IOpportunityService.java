@@ -1,6 +1,7 @@
 package tn.esprit.spring.service;
 
 import java.util.List;
+import java.util.Map;
 
 import tn.esprit.spring.entities.Opportunity;
 import tn.esprit.spring.entities.Travel;
@@ -22,4 +23,6 @@ public interface IOpportunityService {
 	
 	Opportunity updateOpportunityById(Opportunity o,Long idOpportunity);
 	void ajouterEtaffecterOpportunitytoUser (Opportunity op, Long idUser);
+	public List<Map<Long, Integer>> StatisticUserOppotunity();
+	public int nbropportunities();
 	}

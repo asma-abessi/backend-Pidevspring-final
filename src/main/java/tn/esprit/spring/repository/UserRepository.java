@@ -40,4 +40,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public Optional<User> authenticate(String email, String password);
 	
 	
+
 }

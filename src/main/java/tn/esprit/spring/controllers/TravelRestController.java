@@ -118,5 +118,9 @@ public class TravelRestController {
 		return travelservice.GetMatching(idUser);
 		}
 		
-		
+		@GetMapping("/nbr-travel")
+		@ResponseBody
+		public int numbretravel() {
+		return travelservice.nbrtravels();
+		}
 }

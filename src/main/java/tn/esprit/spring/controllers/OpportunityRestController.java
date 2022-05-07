@@ -1,6 +1,7 @@
 package tn.esprit.spring.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -85,5 +86,17 @@ public class OpportunityRestController {
 		@ResponseBody
 		public void assignopportunitytoUser(@RequestBody Opportunity op , @PathVariable("user-id") Long idUser) {
 			opportunityservice.ajouterEtaffecterOpportunitytoUser(op, idUser);
+		}
+		
+		@GetMapping("/statisticnbOpportunityUser") 
+		@ResponseBody 
+		public List<Map<Long, Integer>> statisticnbOpportunityUser(){
+			return opportunityservice.StatisticUserOppotunity();
+		}
+		
+		@GetMapping("/nbr-opportunities")
+		@ResponseBody
+		public int numbreopportunities() {
+		return opportunityservice.nbropportunities();
 		}
 }
