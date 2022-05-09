@@ -39,6 +39,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value="select * from user where email=?1 and password=?2", nativeQuery = true)
 	public Optional<User> authenticate(String email, String password);
 	
-	
+	@Query(value="SELECT count(*) FROM user WHERE role LIKE 'Traveler' ", nativeQuery = true)
+	int nbrTravelers();
+	@Query(value="SELECT count(*) FROM user WHERE role LIKE 'Employee' ", nativeQuery = true)
+	int nbrEmployee();
+	@Query(value="SELECT count(*) FROM user WHERE role LIKE 'Entreprise' ", nativeQuery = true)
+	int nbrEntreprise();
 
 }

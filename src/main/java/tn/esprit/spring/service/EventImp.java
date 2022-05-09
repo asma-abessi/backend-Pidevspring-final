@@ -136,6 +136,13 @@ public class EventImp implements EventService {
 			e.printStackTrace();
 		}
 	}
+
+
+	@Override
+	public int nbrEvents() {
+	
+		return er.nbrEvents();
+	}
 }
 
 

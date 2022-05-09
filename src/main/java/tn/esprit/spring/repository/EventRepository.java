@@ -19,4 +19,7 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 	@Query(value="SELECT * FROM EVENT WHERE lieu=?1", nativeQuery = true)
     public List<Event> searchByPlace(String lieu);
 
+	
+	@Query("SELECT count(u) FROM Event u  ")	
+	int nbrEvents();
 }

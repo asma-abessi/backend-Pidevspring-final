@@ -32,6 +32,7 @@ public class Travel implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long idTravel;
+	private String image;
 	private String destination;		
 	@Temporal(TemporalType.DATE)
     private Date startDate;	

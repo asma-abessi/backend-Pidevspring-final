@@ -24,4 +24,8 @@ public User authenticate(String email, String password);
 
 public void blockUser(Long iduser);
 public List<User> topUsers();
+
+public int nbrTravelers();
+public int nbrEmployee();
+public int nbrEntreprise();
 }

@@ -17,4 +17,5 @@ public interface EventService {
 	void addUsersToEvent(Long idEvent,Long idUser);
 	void sendCancellingEmail(Event event);
 	void addToCalendar(Long idevent);
+	public int nbrEvents();
 }

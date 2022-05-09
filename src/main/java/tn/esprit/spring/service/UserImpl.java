@@ -104,6 +104,21 @@ public class UserImpl implements UserService {
 		return users;
 		
 	}
+	@Override
+	public int nbrTravelers() {
+		
+		return ur.nbrTravelers();
+	}
+	@Override
+	public int nbrEmployee() {
+		
+		return ur.nbrEmployee();
+	}
+	@Override
+	public int nbrEntreprise() {
+		
+		return ur.nbrEntreprise();
+	}
 	
 	
 
