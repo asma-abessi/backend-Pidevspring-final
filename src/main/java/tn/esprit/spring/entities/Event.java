@@ -28,7 +28,7 @@ import lombok.ToString;
 public class Event implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long  idevent;
+	private Long  id;
 	private String eventtype;
 	private int numInv;
 	private int minInv;

@@ -14,6 +14,6 @@ import tn.esprit.spring.entities.User;
 public interface LikessRepository extends JpaRepository<Likess, Long>{
 	Likess findByPostAndUser(Post post, User user);
 	
-	@Query("SELECT l.user.idUser, COUNT(l.user) FROM Likess AS l WHERE date >= :startDate AND date <= :endDate GROUP BY l.user ORDER BY COUNT(l.user) DESC")
+	@Query("SELECT l.user.id, COUNT(l.user) FROM Likess AS l WHERE date >= :startDate AND date <= :endDate GROUP BY l.user ORDER BY COUNT(l.user) DESC")
 	List<Object[]> countTotalLikesByMonth(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }

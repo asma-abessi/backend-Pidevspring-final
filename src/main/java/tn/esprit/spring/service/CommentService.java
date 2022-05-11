@@ -45,7 +45,7 @@ public class CommentService implements ICommentService{
 	@Override
 	public void deleteComment(Long idComment,Long idUser) {
 		Comment comment = commentRepository.getById(idComment);
-		if(comment.getUser().getIdUser()==idUser || comment.getPost().getUser().getIdUser()==idUser)
+		if(comment.getUser().getId()==idUser || comment.getPost().getUser().getId()==idUser)
 		{
 		commentRepository.deleteById(idComment);
 		}
@@ -54,7 +54,7 @@ public class CommentService implements ICommentService{
 	@Override
 	public Comment updateComment(Comment c, Long id, Long idUser) {
 		Comment commentMain = commentRepository.getById(id);
-		if(commentMain.getUser().getIdUser()==idUser || commentMain.getPost().getUser().getIdUser()==idUser)
+		if(commentMain.getUser().getId()==idUser || commentMain.getPost().getUser().getId()==idUser)
 		{
 		Comment comment = commentRepository.getById(id);
 		comment.setText(c.getText());

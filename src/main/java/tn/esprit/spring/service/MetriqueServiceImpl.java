@@ -70,9 +70,9 @@ public class MetriqueServiceImpl implements MetriqueService {
 		    +Metriquerepository.nbreMissionFinit(id,Difficuilte.hard)*3)/Metriquerepository.nbreHeureTravail(id);
 	}
     public int sup(User u,User v){
-		if(this.UserRate(u.getIdUser())>this.UserRate(v.getIdUser()))
+		if(this.UserRate(u.getId())>this.UserRate(v.getId()))
 			return 1;
-		if(this.UserRate(u.getIdUser())<this.UserRate(v.getIdUser()))
+		if(this.UserRate(u.getId())<this.UserRate(v.getId()))
 			return -1;
 		return 0;
 	}

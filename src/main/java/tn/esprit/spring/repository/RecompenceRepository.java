@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Repository
 public interface RecompenceRepository extends CrudRepository<Recompence, Long>{
-    @Query("select count(R) from Recompence R where R.user.idUser = :id")
+    @Query("select count(R) from Recompence R where R.user.id = :id")
     public Integer nbreRecompse(@Param("id") Long id);
     @Query("select R.user from Recompence R ")
     public Set<User> Ruser();

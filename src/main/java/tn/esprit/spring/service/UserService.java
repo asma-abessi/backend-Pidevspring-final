@@ -28,4 +28,8 @@ public List<User> topUsers();
 public int nbrTravelers();
 public int nbrEmployee();
 public int nbrEntreprise();
+
+User Authenticate(String email,String password);
+boolean verifyPassword(String email,String password);
+User ResetPassword(String email,String password);
 }

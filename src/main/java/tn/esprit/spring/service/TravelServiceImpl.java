@@ -148,8 +148,8 @@ public class TravelServiceImpl implements ITravelService {
 				String d=u.getDomain();
 				for(User u2:users2) {
 					String d2=u2.getDomain();
-					Long id1=u.getIdUser();
-					Long id2=u2.getIdUser();
+					Long id1=u.getId();
+					Long id2=u2.getId();
 					if(id1!=id2) {
 						if(d.equals(d2)) {
 							if(	u.getFriends().contains(u2)) {}

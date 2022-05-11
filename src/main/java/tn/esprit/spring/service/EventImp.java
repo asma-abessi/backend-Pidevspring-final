@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
-import tn.esprit.spring.calendar.CalendarService;
 import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.repository.EventRepository;
 import java.util.Set;
@@ -28,9 +27,7 @@ public class EventImp implements EventService {
 	UserRepository ur;
 	@Autowired
 	JavaMailSender mailSender;
-	
-	@Autowired
-	CalendarService cs;
+
 	@Autowired
 	public EventImp(EventRepository er) {
 		this.er=er;
@@ -122,26 +119,19 @@ public class EventImp implements EventService {
 	}
 
 
-	@Override
-	public void addToCalendar(Long idevent) {
-
-		Event event= er.findById(idevent).get();
-		try {
-			cs.addEventToCalendar(event);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (GeneralSecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
+	
 
 	@Override
 	public int nbrEvents() {
 	
 		return er.nbrEvents();
+	}
+
+
+	@Override
+	public void addToCalendar(Long idevent) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

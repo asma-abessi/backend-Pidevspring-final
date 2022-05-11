@@ -62,7 +62,7 @@ public class RecompenceServiceImpl implements RecompenceService {
 	@Override
 	public User mostRecomponsedUser() {
 		Set<User> users=  Recompencerepository.Ruser();
-		User user=users.stream().max((u,v)->this.nbreRecompse(u.getIdUser())-this.nbreRecompse(v.getIdUser())).orElse(null);
+		User user=users.stream().max((u,v)->this.nbreRecompse(u.getId())-this.nbreRecompse(v.getId())).orElse(null);
 		return user;
 	}
 

@@ -13,9 +13,9 @@ import java.util.Set;
 
 @Repository
 public interface MetriqueRepository extends CrudRepository<Metrique, Long>{
-    @Query("select sum(M.workingHours) from Metrique M where M.user.idUser = :id and M.etat='Accomplished'")
+    @Query("select sum(M.workingHours) from Metrique M where M.user.id = :id and M.etat='Accomplished'")
     public Integer nbreHeureTravail(@Param("id") Long id);
-    @Query("select count(M) from Metrique M where M.difficuilte=:diff and M.user.idUser = :id and M.etat='Accomplished' ")
+    @Query("select count(M) from Metrique M where M.difficuilte=:diff and M.user.id = :id and M.etat='Accomplished' ")
     public Integer nbreMissionFinit(@Param("id")Long id, @Param("diff")Difficuilte diff);
     @Query("select M.user from Metrique M ")
     public Set<User> Muser();

@@ -17,9 +17,9 @@ public interface ResponseRepository extends CrudRepository<Response, Long> {
     Set<User> getBestUser(@Param("id") Long id, @Param("max") int max);
     @Query("select max(R.score) from Response R where R.quiz.IdQuiz =:id ")
     int  getmaxScore(@Param("id") Long id);
-    @Query("select sum(R.score)/count(R) from Response R where R.user.idUser =:id")
+    @Query("select sum(R.score)/count(R) from Response R where R.user.id =:id")
     float  getMoyenne(@Param("id") Long id);
-    @Query("select count(R) from Response R where R.user.idUser =:id and R.score=100")
+    @Query("select count(R) from Response R where R.user.id =:id and R.score=100")
     public Integer nbrCorrecte(@Param("id")Long id);
     @Query("select R.user from Response R ")
     Set<User> geUser();

@@ -3,8 +3,11 @@ package tn.esprit.spring.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import tn.esprit.spring.entities.Comment;
 
+@Repository
 public interface ICommentService {
 
 public List<Comment> retrieveAllComment();

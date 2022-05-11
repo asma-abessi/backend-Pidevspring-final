@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.spring.calendar.CalendarService;
 import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.repository.EventRepository;
 import tn.esprit.spring.service.EventService;
@@ -26,9 +25,6 @@ import tn.esprit.spring.service.EventService;
 public class EventController {
 	@Autowired
 	EventService eventservice;
-	
-	@Autowired
-	CalendarService cs;
 	
 	@Autowired
 	EventRepository er;
@@ -72,8 +68,8 @@ public class EventController {
 		private Event saveEvent(@RequestBody Event event)   
 		{  
 		eventservice.addEvent(event); 
-		Long id= event.getIdevent();
-		eventservice.addToCalendar(id);
+		Long id= event.getId();
+		//eventservice.addToCalendar(id);
 		return event;
 		}
 		
