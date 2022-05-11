@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.service.UserService;
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 
 public class UserController {
 	@Autowired
 	UserService userservice;
-	//creating a get mapping that retrieves all the user detail from the database   
+	//creating a get mapping that retrieves all the user detail from the database  
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 	@GetMapping("/users")
 	private List<User>getAllUser()
 	{
@@ -31,6 +33,8 @@ public class UserController {
 		return users;
 	}
 	//creating a get mapping that retrieves the detail of a specific user 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 	@GetMapping("/user/{userid}")
 	private User getUser(@PathVariable("userid")Long userid)
 	{
@@ -38,24 +42,33 @@ public class UserController {
 		return u;
 	}
 	//creating a delete mapping that deletes a specified book  
-	@DeleteMapping("/deleteUser/{userid}")
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+
+	@DeleteMapping("/remove-user/{userid}")
 	private void DeleteUser(@PathVariable("userid")Long userid)
 	{
 		userservice.deleteUser(userid);
 	}
 	//creating post mapping that post the book detail in the database  
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 	@PostMapping("/saveUser")  
 	private User saveUser(@RequestBody User user)   
 	{  
 	userservice.addUser(user);  
 	return user;
 	} 
-	@PostMapping("/blockUser/{id}")  
+	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+
+	@PutMapping("/blockUser/{id}")  
 	private void blockUser(@PathVariable("id") Long id)   
 	{  
 	userservice.blockUser(id); 
 	
 	} 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 	//creating put mapping that updates the book detail   
 	@PutMapping("/updateUser")  
 	private User update(@RequestBody User user)   
@@ -64,6 +77,8 @@ public class UserController {
 	return user;  
 	}  
 	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 	
 	@GetMapping("/find-user-by-email/{email}")
     public Optional<User> find_user_by_email(@PathVariable("email") String email){
@@ -86,6 +101,21 @@ public class UserController {
     public User authenticate(@PathVariable("email") String email,@PathVariable("password") String password){
 		return userservice.authenticate(email, password);
 }
+	
+	 @PostMapping("/authenticate-user")
+	    public User Authenticate(@RequestBody User u){
+	        return  userservice.Authenticate(u.getEmail(),u.getPassword());
+	    }
+
+	    @PostMapping("/reset-password-user")
+	    public User ResetPassword(@RequestBody User u){
+	        return  userservice.ResetPassword(u.getEmail(),u.getPassword());
+	    }
+
+	    @PostMapping("/verify-password-user")
+	    public boolean verifyPassword(@RequestBody User u){
+	        return  userservice.verifyPassword(u.getEmail(),u.getPassword());
+	    }
 	
 	@GetMapping("/nbr-Travelers")
 	@ResponseBody

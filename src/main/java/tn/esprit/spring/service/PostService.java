@@ -57,7 +57,7 @@ public class PostService implements IPostService {
 	@Override
 	public void deletePost(Long idPost, Long idUser) {
 		Post post = postRepository.getById(idPost);
-		if(post.getUser().getIdUser()==idUser)
+		if(post.getUser().getId()==idUser)
 		{
 			postRepository.deleteById(idPost);
 		}
@@ -68,7 +68,7 @@ public class PostService implements IPostService {
 	@Override
 	public Post updatePost(Post p, Long id, Long idUser) {
 		Post postMain = postRepository.getById(id);
-		if(postMain.getUser().getIdUser()==idUser)
+		if(postMain.getUser().getId()==idUser)
 		{
 		Post post = postRepository.getById(id);
 		post.setContent(p.getContent());

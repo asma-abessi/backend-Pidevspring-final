@@ -44,7 +44,7 @@ public class SubCommentService implements ISubCommentService{
 	@Override
 	public void deleteSubComment(Long idSubComment, Long idUser) {
 		SubComment subComment = subCommentRepository.getById(idSubComment);
-		if(subComment.getUser().getIdUser()==idUser || subComment.getComment().getPost().getUser().getIdUser()==idUser)
+		if(subComment.getUser().getId()==idUser || subComment.getComment().getPost().getUser().getId()==idUser)
 		{
 		subCommentRepository.deleteById(idSubComment);
 		}
@@ -54,7 +54,7 @@ public class SubCommentService implements ISubCommentService{
 	@Override
 	public SubComment updateSubComment(SubComment c, Long id, Long idUser) {
 		SubComment subCommentMain = subCommentRepository.getById(id);
-		if(subCommentMain.getUser().getIdUser()==idUser || subCommentMain.getComment().getPost().getUser().getIdUser()==idUser)
+		if(subCommentMain.getUser().getId()==idUser || subCommentMain.getComment().getPost().getUser().getId()==idUser)
 		{
 		SubComment subComment = subCommentRepository.getById(id);
 		subComment.setText(c.getText());

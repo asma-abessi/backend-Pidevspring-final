@@ -120,7 +120,39 @@ public class UserImpl implements UserService {
 		return ur.nbrEntreprise();
 	}
 	
-	
+
+    @Override
+    public User Authenticate(String email, String password) {
+        Optional<User> UserExists=ur.findUserByEmail(email);
+        if(UserExists.isPresent()){
+            User user=UserExists.get();
+            if (bCryptPasswordEncoder.matches(password,user.getPassword())){
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean verifyPassword(String email, String password) {
+        Optional<User> UserExists=ur.findUserByEmail(email);
+        if(UserExists.isPresent()){
+            User user=UserExists.get();
+            return bCryptPasswordEncoder.matches(password, user.getPassword());
+        }
+        return false;
+    }
+
+    @Override
+    public User ResetPassword(String email, String password) {
+        Optional<User> UserExists=ur.findUserByEmail(email);
+        if(UserExists.isPresent()){
+            User user=UserExists.get();
+            user.setPassword(bCryptPasswordEncoder.encode(password));
+            return ur.save(user);
+        }
+        return null;
+    }
 
 	
 	

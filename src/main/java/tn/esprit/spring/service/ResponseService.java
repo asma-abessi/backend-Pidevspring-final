@@ -65,7 +65,7 @@ public class ResponseService implements IRespons {
     public List<User> top() {
        Set<User> users=  rr.geUser();
        List<User> list =new ArrayList(users);
-       list=users.stream().sorted((u,v)->rr.nbrCorrecte(v.getIdUser())-rr.nbrCorrecte(u.getIdUser())).collect(Collectors.toList());
+       list=users.stream().sorted((u,v)->rr.nbrCorrecte(v.getId())-rr.nbrCorrecte(u.getId())).collect(Collectors.toList());
        long n= (long) (list.size()*0.1);
        if(n==0) n=1;
         return list.stream().limit(n).collect(Collectors.toList());
@@ -83,13 +83,13 @@ public class ResponseService implements IRespons {
                 pr.save(p);
                 return p.getBadageQuizz();
             }
-            if(rr.nbrCorrecte(p.getIdUser())>=10)
+            if(rr.nbrCorrecte(p.getId())>=10)
             {
                 p.setBadageQuizz(BadageQuizz.smart);
                 pr.save(p);
                 return p.getBadageQuizz();
             }
-            if(rr.nbrCorrecte(p.getIdUser())>0)
+            if(rr.nbrCorrecte(p.getId())>0)
             {
                 p.setBadageQuizz(BadageQuizz.first);
                 pr.save(p);

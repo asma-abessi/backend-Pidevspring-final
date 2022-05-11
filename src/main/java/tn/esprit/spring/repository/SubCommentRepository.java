@@ -11,6 +11,6 @@ import org.springframework.data.repository.query.Param;
 import tn.esprit.spring.entities.SubComment;
 
 public interface SubCommentRepository extends JpaRepository<SubComment, Long> {
-	@Query("SELECT s.user.idUser, COUNT(s.user) FROM SubComment AS s WHERE date >= :startDate AND date <= :endDate GROUP BY s.user ORDER BY COUNT(s.user) DESC")
+	@Query("SELECT s.user.id, COUNT(s.user) FROM SubComment AS s WHERE date >= :startDate AND date <= :endDate GROUP BY s.user ORDER BY COUNT(s.user) DESC")
 	List<Object[]> countTotalSubCommentsByMonth(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }

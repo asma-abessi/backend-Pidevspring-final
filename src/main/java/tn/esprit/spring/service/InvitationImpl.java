@@ -125,7 +125,7 @@ public class InvitationImpl implements InvitationService  {
 		
 		for (User user : users) {
 			for (Long id : idusers) {
-				if (user.getIdUser()==id) {
+				if (user.getId()==id) {
 					User us= ur.findById(id).get();
 					user.getInvitations().add(c);
 				}
