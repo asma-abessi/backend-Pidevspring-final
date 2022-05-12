@@ -153,6 +153,13 @@ public class UserImpl implements UserService {
         }
         return null;
     }
+	@Override
+	public void unblockUser(Long iduser) {
+		User u= ur.findById(iduser).get();
+		u.setBlocked(false);
+		ur.save(u);
+		
+	}
 
 	
 	
