@@ -81,10 +81,18 @@ public class EventImp implements EventService {
 			
 			ev.setNumInv(number+1);
 		
-		
+			
 		er.save(ev);
 
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom("oussama.sboui@esprit.tn");
+		message.setTo("ons.chebbi@esprit.tn");
+	    message.setText("Mr/Mrs : "+u.getName()+ "/n The  : " +ev.getEntrepriseName()+ " is so pleased to invite you to its new event."
+				+ "The event " + ev.getSubject() + "will be on :" +ev.getDatedebut()
+						+ "/n Please Join Us");
+		message.setSubject("A new invitation for you");
 		
+		mailSender.send(message);
 	}
 
 
@@ -132,6 +140,14 @@ public class EventImp implements EventService {
 	public void addToCalendar(Long idevent) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public Set<User> invited(Long idevent) {
+		Event event= er.findById(idevent).get();
+		return event.getUsers();
+
 	}
 }
 

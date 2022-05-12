@@ -108,12 +108,7 @@ public class UserController {
     public List<User> orderByName(){
         return userservice.orderByName();
     }
-	
-	@GetMapping("/authenticate/{email}/{password}")
-    public User authenticate(@PathVariable("email") String email,@PathVariable("password") String password){
-		return userservice.authenticate(email, password);
-}
-	
+
 	 @PostMapping("/authenticate-user")
 	    public User Authenticate(@RequestBody User u){
 	        return  userservice.Authenticate(u.getEmail(),u.getPassword());

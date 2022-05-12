@@ -2,6 +2,7 @@ package tn.esprit.spring.service;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Set;
 
 import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.entities.User;
@@ -18,4 +19,6 @@ public interface EventService {
 	void sendCancellingEmail(Event event);
 	void addToCalendar(Long idevent);
 	public int nbrEvents();
+	public Set<User> invited(Long idevent);
+
 }
