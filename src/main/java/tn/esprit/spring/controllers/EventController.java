@@ -49,7 +49,7 @@ public class EventController {
 			return Events;
 		}
 		//creating a get mapping that retrieves the detail of a specific event 
-		@GetMapping("/Event/{idevent}")
+		@GetMapping("/event/{idevent}")
 		private Event getEvent(@PathVariable("idevent")Long idevent)
 		{
 			Event e= eventservice.retrieveEvent(idevent);

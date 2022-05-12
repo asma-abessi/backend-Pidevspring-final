@@ -67,6 +67,18 @@ public class UserController {
 	userservice.blockUser(id); 
 	
 	} 
+	
+	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+
+	@PutMapping("/unblockUser/{id}")  
+	private void unblockUser(@PathVariable("id") Long id)   
+	{  
+	userservice.unblockUser(id); 
+	
+	}
+	
+	
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 
 	//creating put mapping that updates the book detail   
