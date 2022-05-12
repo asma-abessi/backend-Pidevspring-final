@@ -1,6 +1,7 @@
 package tn.esprit.spring.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Event;
+import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repository.EventRepository;
 import tn.esprit.spring.service.EventService;
 
@@ -107,6 +109,13 @@ public class EventController {
 		@ResponseBody
 		public int numbreevents() {
 		return eventservice.nbrEvents();
+		}
+		
+		
+		@GetMapping("/invited/{idevent}")
+		@ResponseBody
+		public Set<User> users(@PathVariable("idevent") Long idevent){
+		return eventservice.invited(idevent);
 		}
 	
 
